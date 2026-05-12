@@ -39,7 +39,7 @@ public class AlphaVantageIndicatorService {
 
             String url = baseUrl + "/query" + "?function=SMA" + "&symbol=" + formattedSymbol + "&interval=daily" + "&time_period=200" + "&series_type=close" + "&apikey=" + apiKey;
 
-            log.info("Fetching SMA200 for {}", url);
+            log.info("Fetching SMA200 for the Trade");
 
             log.info("Waiting before making request to avoid rate limit");
 
