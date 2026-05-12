@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
@@ -38,7 +39,7 @@ public class AlphaVantageHistoricalCandleService implements HistoricalCandleServ
 
             apiRateLimiter.acquire(); // to limit the api calls according to free tier of alphaVantage
 
-            AlphaVantageResponse response = webClient.get().uri(url).retrieve().bodyToMono(AlphaVantageResponse.class).block();
+            AlphaVantageResponse response = webClient.get().uri(url).retrieve().bodyToMono(AlphaVantageResponse.class).timeout(Duration.ofSeconds(20)).block();
 
             return response.getTimeSeries().entrySet().stream().map(entry -> {
                 AlphaVantageResponse.DailyData d = entry.getValue();

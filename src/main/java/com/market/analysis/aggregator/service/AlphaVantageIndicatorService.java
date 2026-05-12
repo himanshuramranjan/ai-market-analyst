@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.time.Duration;
 import java.util.Map;
 
 @Slf4j
@@ -43,13 +44,13 @@ public class AlphaVantageIndicatorService {
             log.info("Waiting before making request to avoid rate limit");
 
             apiRateLimiter.acquire(); // to limit the api calls according to free tier of alphaVantage
-            String rawResponse = webClient.get().uri(url).retrieve().bodyToMono(String.class).block();
+            String rawResponse = webClient.get().uri(url).retrieve().bodyToMono(String.class).timeout(Duration.ofSeconds(20)).block();
 
             ObjectMapper objectMapper = new ObjectMapper();
 
             SMAResponse response = objectMapper.readValue(rawResponse, SMAResponse.class);
 
-            log.info("SMA response parsed successfully: {}", response);
+            log.debug("SMA response parsed successfully: {}", response);
 
             if(response == null || response.technicalAnalysis() == null || response.technicalAnalysis().isEmpty()) {
 

@@ -19,7 +19,7 @@ logging:
 market-analysis:
 
   stocks:
-    - MON100
+    - SETFNIF50
 
   telegram:
     enabled: true
