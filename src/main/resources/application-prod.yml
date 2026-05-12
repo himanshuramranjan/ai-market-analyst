@@ -2,7 +2,7 @@ spring:
   config:
     activate:
       on-profile: prod
-      
+
 server:
   port: 8080
 
@@ -22,7 +22,7 @@ logging:
 market-analysis:
 
   stocks:
-    - SETFNIF50
+    - TCS
 
   telegram:
     enabled: true
