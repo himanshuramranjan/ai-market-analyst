@@ -20,11 +20,9 @@ market-analysis:
 
   stocks:
     - MON100
-    - SETFNIF50
-    - BANKBEES
 
   telegram:
     enabled: true
 
   scheduler:
-    cron: "0 */3 * * * *"
+    cron: "0 */2 * * * *"
