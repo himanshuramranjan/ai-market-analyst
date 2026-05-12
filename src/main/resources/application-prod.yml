@@ -3,9 +3,6 @@ spring:
     activate:
       on-profile: prod
 
-server:
-  port: 8080
-
 logging:
   level:
     root: INFO
@@ -22,7 +19,9 @@ logging:
 market-analysis:
 
   stocks:
-    - TCS
+    - MON100
+    - SETFNIF50
+    - BANKBEES
 
   telegram:
     enabled: true
