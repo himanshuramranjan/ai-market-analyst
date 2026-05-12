@@ -1,0 +1,17 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+logging:
+  level:
+    com.market.analysis: DEBUG
+    org.springframework: INFO
+
+market-analysis:
+  stocks:
+    - TCS
+    - RELIANCE
+
+  scheduler:
+    cron: "0 15 18 * * MON-FRI"

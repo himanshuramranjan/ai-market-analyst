@@ -1,0 +1,31 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+logging:
+  level:
+    root: INFO
+    com.market.analysis: INFO
+
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+  file:
+    name: logs/market-analysis.log
+    max-size: 10MB
+    max-history: 7
+
+market-analysis:
+
+  stocks:
+    - RELIANCE
+    - MON100
+    - SETFNIF50
+    - BANKBEES
+
+  telegram:
+    enabled: true
+
+  scheduler:
+    cron: "0 15 18 * * MON-FRI"

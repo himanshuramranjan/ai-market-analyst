@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: stock-market-analyzer
+  profiles:
+    active:
+      - prod
+
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+
+market-analysis:
+  api:
+    alpha-vantage:
+      api-key: ${ALPHA_VANTAGE_API_KEY}
+      base-url: https://www.alphavantage.co
+
+  ai:
+    groq:
+      api-key: ${GROQ_API_KEY}
+
+  telegram:
+    enabled: true
+    bot-token: ${TELEGRAM_BOT_TOKEN}
+    chat-id: ${TELEGRAM_CHAT_ID}
+
+  rules:
+    trend:
+      sma200-weight: 0.65
+      sma50-weight: 0.35
+    momentum:
+      rsi-threshold-strong: 58
+      rsi-threshold-weak: 42
+    valuation:
+      pe-cheap-threshold: 15
+      pe-expensive-threshold: 25
+
+  scoring:
+    trend-weight: 0.55
+    momentum-weight: 0.30
+    valuation-weight: 0.15
