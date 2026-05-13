@@ -19,10 +19,9 @@ logging:
 market-analysis:
 
   stocks:
-    - RELIANCE
+    - MON100
+    - SETFNIF50
+    - BANKBEES
 
   telegram:
     enabled: true
-
-  scheduler:
-    cron: "0 */1 * * * *"

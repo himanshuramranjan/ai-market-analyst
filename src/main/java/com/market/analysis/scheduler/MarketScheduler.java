@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Profile("dev")
 @Slf4j
 @Service
 @RequiredArgsConstructor
