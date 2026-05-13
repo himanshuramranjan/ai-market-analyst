@@ -27,4 +27,4 @@ market-analysis:
     enabled: true
 
   scheduler:
-    cron: "0 15 18 * * MON-FRI"
+    cron: "*/2 * * * *"
