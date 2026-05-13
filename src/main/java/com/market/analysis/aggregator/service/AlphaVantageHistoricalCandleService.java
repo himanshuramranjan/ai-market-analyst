@@ -51,6 +51,7 @@ public class AlphaVantageHistoricalCandleService implements HistoricalCandleServ
                 log.error("Full response: {}", response);
                 throw new ApiException("Missing time series data from AlphaVantage");
             }
+
             log.info("Received {} candles for {}", response.getTimeSeries().size(), symbol);
 
             return response.getTimeSeries().entrySet().stream().map(entry -> {
