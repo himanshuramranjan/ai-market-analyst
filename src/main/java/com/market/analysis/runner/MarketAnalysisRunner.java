@@ -29,7 +29,7 @@ public class MarketAnalysisRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
 
-        log.info("Starting GitHub Actions market analysis");
+        log.info("Starting scheduled market analysis");
 
         List<String> stocks = properties.getStocks();
 
@@ -46,6 +46,6 @@ public class MarketAnalysisRunner implements ApplicationRunner {
             }
         });
 
-        log.info("GitHub Actions market analysis completed");
+        log.info("Scheduled market analysis completed");
     }
 }
