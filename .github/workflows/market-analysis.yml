@@ -3,7 +3,7 @@ name: Daily Market Analysis
 on:
   schedule:
     # 6:15 PM IST = 12:45 PM UTC
-    - cron: '*/2 * * * *'
+    - cron: '45 12 * * 1-5'
   workflow_dispatch:
 
 jobs:
