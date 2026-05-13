@@ -40,25 +40,24 @@ public class AlphaVantageHistoricalCandleService implements HistoricalCandleServ
 
             apiRateLimiter.acquire(); // to limit the api calls according to free tier of alphaVantage
 
-//            AlphaVantageResponse response = webClient.get().uri(url).retrieve().bodyToMono(AlphaVantageResponse.class).timeout(Duration.ofSeconds(20)).block();
+            AlphaVantageResponse response = webClient.get().uri(url).retrieve().bodyToMono(AlphaVantageResponse.class).timeout(Duration.ofSeconds(20)).block();
 
-//            if(response == null) {
-//                log.error("AlphaVantage response is NULL for {}", symbol);
-//                throw new ApiException("Null response received from AlphaVantage");
-//            }
-//            if(response.getTimeSeries() == null) {
-//                log.error("Time series missing in AlphaVantage response for {}", symbol);
-//                log.error("Full response: {}", response);
-//                throw new ApiException("Missing time series data from AlphaVantage");
-//            }
-//            log.info("Received {} candles for {}", response.getTimeSeries().size(), symbol);
-//
-//            return response.getTimeSeries().entrySet().stream().map(entry -> {
-//                AlphaVantageResponse.DailyData d = entry.getValue();
-//
-//                return new HistoricalCandle(LocalDate.parse(entry.getKey()), parse(d.open()), parse(d.high()), parse(d.low()), parse(d.close()), Long.parseLong(d.volume()));
-//            }).sorted(Comparator.comparing(HistoricalCandle::date)).toList();
-            return List.of();
+            if(response == null) {
+                log.error("AlphaVantage response is NULL for {}", symbol);
+                throw new ApiException("Null response received from AlphaVantage");
+            }
+            if(response.getTimeSeries() == null) {
+                log.error("Time series missing in AlphaVantage response for {}", symbol);
+                log.error("Full response: {}", response);
+                throw new ApiException("Missing time series data from AlphaVantage");
+            }
+            log.info("Received {} candles for {}", response.getTimeSeries().size(), symbol);
+
+            return response.getTimeSeries().entrySet().stream().map(entry -> {
+                AlphaVantageResponse.DailyData d = entry.getValue();
+
+                return new HistoricalCandle(LocalDate.parse(entry.getKey()), parse(d.open()), parse(d.high()), parse(d.low()), parse(d.close()), Long.parseLong(d.volume()));
+            }).sorted(Comparator.comparing(HistoricalCandle::date)).toList();
         } catch(Exception ex) {
             log.error("Error in fetching the candle details : ", ex);
             throw new ApiException("Failed fetching market data from AlphaVantage", ex);
