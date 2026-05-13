@@ -116,7 +116,7 @@ public class AnalysisOrchestrator {
             return result;
 
         } catch(Exception e) {
-            log.error("API error for {}: {}", symbol, e.getMessage());
+            log.error("API error for {}: {}", symbol, e);
             return AnalysisResult.failed(symbol, e.getMessage(), AnalysisResult.AnalysisStatus.FETCH_FAILED);
         }
     }
