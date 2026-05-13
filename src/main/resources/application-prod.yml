@@ -19,10 +19,10 @@ logging:
 market-analysis:
 
   stocks:
-    - TCS
+    - RELIANCE
 
   telegram:
     enabled: true
 
   scheduler:
-    cron: "0 */2 * * * *"
+    cron: "0 */1 * * * *"
