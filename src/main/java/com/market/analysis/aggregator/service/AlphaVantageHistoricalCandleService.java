@@ -47,6 +47,7 @@ public class AlphaVantageHistoricalCandleService implements HistoricalCandleServ
                 return new HistoricalCandle(LocalDate.parse(entry.getKey()), parse(d.open()), parse(d.high()), parse(d.low()), parse(d.close()), Long.parseLong(d.volume()));
             }).sorted(Comparator.comparing(HistoricalCandle::date)).toList();
         } catch(Exception ex) {
+            log.error("Error in fetching the candle details : " + ex);
             throw new ApiException("Failed fetching market data from AlphaVantage" + ex.getMessage());
         }
     }
