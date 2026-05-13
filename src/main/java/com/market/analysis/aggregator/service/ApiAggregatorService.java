@@ -55,7 +55,7 @@ public class ApiAggregatorService {
 
             } catch(Exception e) {
                 failureReasons.add(provider.getProviderName() + ": " + e.getMessage());
-                log.warn("Provider {} failed for {}: {}", provider.getProviderName(), symbol, e.getMessage());
+                log.error("Provider {} failed for {}: {}", provider.getProviderName(), symbol, e);
             }
         }
 

@@ -48,7 +48,7 @@ public class AlphaVantageHistoricalCandleService implements HistoricalCandleServ
             }).sorted(Comparator.comparing(HistoricalCandle::date)).toList();
         } catch(Exception ex) {
             log.error("Error in fetching the candle details : ", ex);
-            throw new ApiException("Failed fetching market data from AlphaVantage" + ex.getMessage());
+            throw new ApiException("Failed fetching market data from AlphaVantage", ex);
         }
     }
 
