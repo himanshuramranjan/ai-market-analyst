@@ -36,7 +36,7 @@ public class AlphaVantageHistoricalCandleService implements HistoricalCandleServ
             String url = baseUrl + "/query" + "?function=TIME_SERIES_DAILY" + "&symbol=" + formattedSymbol + "&outputsize=compact" + "&apikey=" + apiKey;
 
             log.info("Fetching historical candles for {}", symbol);
-            log.info("Waiting before making request to avoid rate limit {}", url);
+            log.info("Waiting before making request to avoid rate limit");
 
             apiRateLimiter.acquire(); // to limit the api calls according to free tier of alphaVantage
 
