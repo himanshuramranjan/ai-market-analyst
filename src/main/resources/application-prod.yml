@@ -3,6 +3,9 @@ spring:
     activate:
       on-profile: prod
 
+  main:
+    web-application-type: none
+
 logging:
   level:
     root: INFO
